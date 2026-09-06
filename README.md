@@ -5,15 +5,12 @@ Homebrew tap for [dedent-paste](https://github.com/doggy8088/dedent-paste): past
 ## Install
 
 ```sh
-brew install doggy8088/dedent-paste/dedent-paste
-```
-
-Or tap first, then install:
-
-```sh
 brew tap doggy8088/dedent-paste
+brew trust doggy8088/dedent-paste
 brew install dedent-paste
 ```
+
+Homebrew 6 and later refuse to load formulas from third-party taps until you run `brew trust` on the tap once. On older Homebrew versions the `brew trust` step is not needed and can be skipped.
 
 ## Upgrade
 
