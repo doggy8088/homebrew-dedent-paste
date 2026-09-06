@@ -1,25 +1,25 @@
 class DedentPaste < Formula
   desc "Paste clipboard text with common indentation removed"
   homepage "https://dedent-paste.gh.miniasp.com/"
-  version "0.3.2"
+  version "0.4.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.3.2/dedent-paste-aarch64-apple-darwin.tar.xz"
-      sha256 "d28c37e8367ca3a18696479abcf5efde7ed3337798f5ff314a9d0508beb6faa8"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.4.0/dedent-paste-aarch64-apple-darwin.tar.xz"
+      sha256 "ac26b871277c99215e45d33967b1df5acea9d27baf92d27737b1b0743104bf34"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.3.2/dedent-paste-x86_64-apple-darwin.tar.xz"
-      sha256 "c2da7b29343ff0be03043b45f0e78e5ffa31b1191e6585d2dc539ac69c715195"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.4.0/dedent-paste-x86_64-apple-darwin.tar.xz"
+      sha256 "142e7ee9e1ae2c2429e2de0a680fb4d6fa1836675dcaff282845a464153cf8f1"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.3.2/dedent-paste-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "77b1d740d016674cd61f421af9446e3685886148b379a19725cb271b1b7af27f"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.4.0/dedent-paste-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "6ea37a3c6c99aba81df37bd469ecd77125ec8c05a921fedf8bd9a062f08d13f4"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.3.2/dedent-paste-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "8f229bed4734b4bf8156749fcbefb4f1c42900297f3985855e7a0a8c93809a94"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.4.0/dedent-paste-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "05feafc956deed74f05989db60e286c69409c22e1919f51990f5691351aa399c"
     end
   end
   license "MIT"
