@@ -13,11 +13,11 @@ MIN_VERSION = (0, 4, 0)
 
 CAVEATS = '''  def caveats
     <<~EOS
-      dedent-paste is installed, but the Option+V hotkey is NOT set up yet.
+      dedent-paste is installed, but the Left Option+V hotkey is NOT set up yet.
 
       1. Install Karabiner-Elements if you have not already:
            brew install --cask karabiner-elements
-      2. Register the Option+V rule (your Karabiner profile is backed up first):
+      2. Register the Left Option+V rule (your Karabiner profile is backed up first):
            dedent-paste --install
       3. Allow Karabiner-Elements under
            System Settings > Privacy & Security > Accessibility

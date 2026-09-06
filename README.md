@@ -34,7 +34,7 @@ brew install --cask karabiner-elements   # if you do not have it yet
 dedent-paste --install
 ```
 
-`dedent-paste --install` backs up your Karabiner profile, then adds an `Option+V` rule that runs the Homebrew-installed binary. Run `dedent-paste --uninstall` to remove it again. If nothing happens when you press `Option+V`, allow Karabiner-Elements under System Settings > Privacy & Security > Accessibility. See the [dedent-paste README](https://github.com/doggy8088/dedent-paste#macos) for details.
+`dedent-paste --install` backs up your Karabiner profile, then adds a `Left Option+V` rule that runs the Homebrew-installed binary (the right Option is left alone for other tools). Run `dedent-paste --uninstall` to remove it again. If nothing happens when you press `Left Option+V`, allow Karabiner-Elements under System Settings > Privacy & Security > Accessibility. See the [dedent-paste README](https://github.com/doggy8088/dedent-paste#macos) for details.
 
 ## How this tap is updated
 
