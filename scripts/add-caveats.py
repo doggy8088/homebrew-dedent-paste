@@ -3,13 +3,13 @@
 
 cargo-dist rewrites Formula/dedent-paste.rb on every release and has no
 caveats support, so this script re-applies the block afterwards. It is
-idempotent and skips formulas older than 0.3.3, which lack `--install`.
+idempotent and skips formulas older than 0.4.0, which lack `--install`.
 """
 import re
 import sys
 from pathlib import Path
 
-MIN_VERSION = (0, 3, 3)
+MIN_VERSION = (0, 4, 0)
 
 CAVEATS = '''  def caveats
     <<~EOS
