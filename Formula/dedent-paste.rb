@@ -71,4 +71,20 @@ class DedentPaste < Formula
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
+
+  def caveats
+    <<~EOS
+      dedent-paste is installed, but the Left Option+V hotkey is NOT set up yet.
+
+      1. Install Karabiner-Elements if you have not already:
+           brew install --cask karabiner-elements
+      2. Register the Left Option+V rule (your Karabiner profile is backed up first):
+           dedent-paste --install
+      3. Allow Karabiner-Elements under
+           System Settings > Privacy & Security > Accessibility
+
+      To remove the rule later:
+           dedent-paste --uninstall
+    EOS
+  end
 end
