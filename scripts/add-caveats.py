@@ -4,6 +4,9 @@
 cargo-dist rewrites Formula/dedent-paste.rb on every release and has no
 caveats support, so this script re-applies the block afterwards. It is
 idempotent and skips formulas older than 0.4.0, which lack `--install`.
+
+It also appends a `test do` block: cargo-dist formulas have none, and
+`brew style` (FormulaAudit/Test) now rejects formulas without one.
 """
 import re
 import sys
@@ -28,12 +31,20 @@ CAVEATS = '''  def caveats
   end
 '''
 
+TEST = '''
+  test do
+    assert_match version.to_s, shell_output("#{bin}/dedent-paste --version")
+  end
+'''
+
 
 def main(path: Path) -> int:
     text = path.read_text(encoding="utf-8")
 
-    if "def caveats" in text:
-        print(f"{path}: caveats already present")
+    has_caveats = "def caveats" in text
+    has_test = re.search(r"^\s*test do\b", text, re.MULTILINE) is not None
+    if has_caveats and has_test:
+        print(f"{path}: caveats and test already present")
         return 0
 
     match = re.search(r'^\s*version "(\d+)\.(\d+)\.(\d+)', text, re.MULTILINE)
@@ -45,16 +56,23 @@ def main(path: Path) -> int:
         print(f"{path}: version {'.'.join(map(str, version))} predates --install; skipping")
         return 0
 
-    # Homebrew's style check wants caveats after install, so append the block
-    # just before the closing `end` of the formula class.
+    # Homebrew's style check wants caveats after install and `test do` last, so
+    # append the blocks just before the closing `end` of the formula class.
     stripped = text.rstrip("\n")
     if not stripped.endswith("\nend"):
         print(f"{path}: formula does not end with a class 'end'", file=sys.stderr)
         return 1
 
     body = stripped[: -len("end")]
-    path.write_text(body + "\n" + CAVEATS + "end\n", encoding="utf-8")
-    print(f"{path}: caveats added")
+    added = []
+    if not has_caveats:
+        body += "\n" + CAVEATS
+        added.append("caveats")
+    if not has_test:
+        body += TEST
+        added.append("test")
+    path.write_text(body + "end\n", encoding="utf-8")
+    print(f"{path}: {' and '.join(added)} added")
     return 0
 
 
