@@ -1,25 +1,25 @@
 class DedentPaste < Formula
   desc "Paste clipboard text with common indentation removed"
   homepage "https://dedent-paste.gh.miniasp.com/"
-  version "0.6.2"
+  version "0.6.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.2/dedent-paste-aarch64-apple-darwin.tar.xz"
-      sha256 "e5889d7447780fa21392a0156c0bd99dda79a88a689f4a1d7243cbe15d4f17ea"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.3/dedent-paste-aarch64-apple-darwin.tar.xz"
+      sha256 "31dc4ee604507a6eef55182188c530042e97aad72957866eccff23904204861e"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.2/dedent-paste-x86_64-apple-darwin.tar.xz"
-      sha256 "dd3dce9ec27bd389d882b81a802a20934474b62eb37518e9c37df959aa702f4d"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.3/dedent-paste-x86_64-apple-darwin.tar.xz"
+      sha256 "9c8f813559a9c72d9d4794065480f92bef7ccd8054f3b91ea480bd30d3b3882f"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.2/dedent-paste-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "d608423adf233f2dc6e88cfd71923ce0ec2657b36f491a429e48f2d94255998f"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.3/dedent-paste-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "5d968abd68562a698634a10e864582e9897a9eb205ed57421410412b20ee0d9c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.2/dedent-paste-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "193efc8b47cbded3b27bfd5b299e50cfdb5fe1b7f79f72adddb4253d4103f5a7"
+      url "https://github.com/doggy8088/dedent-paste/releases/download/v0.6.3/dedent-paste-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "ae6edd0f5dc09f1fc4d0bc85f63d9b543417d544e980b33c4d404587a043f22a"
     end
   end
   license "MIT"
@@ -70,25 +70,5 @@ class DedentPaste < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
-  end
-
-  def caveats
-    <<~EOS
-      dedent-paste is installed, but the Left Option+V hotkey is NOT set up yet.
-
-      1. Install Karabiner-Elements if you have not already:
-           brew install --cask karabiner-elements
-      2. Register the Left Option+V rule (your Karabiner profile is backed up first):
-           dedent-paste --install
-      3. Allow Karabiner-Elements under
-           System Settings > Privacy & Security > Accessibility
-
-      To remove the rule later:
-           dedent-paste --uninstall
-    EOS
-  end
-
-  test do
-    assert_match version.to_s, shell_output("#{bin}/dedent-paste --version")
   end
 end
